@@ -66,7 +66,9 @@ function deliver(slip: string): void {
 function run(): void {
   const problems = collectProblems(SLIP);
   if (problems.length > 0) {
-    throw new Error(`fortune rejected:\n- ${problems.join("\n- ")}`);
+    throw new Error(
+      `fortune rejected (${SLIP.length} characters, ${problems.length} problem${problems.length === 1 ? "" : "s"}):\n- ${problems.join("\n- ")}`,
+    );
   }
   deliver(SLIP);
   console.log(
